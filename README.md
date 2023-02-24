@@ -1,16 +1,11 @@
-# Interview Project
+# interview_project
 
-This is the Nav Mobile App Team interview project.
+A barebones Flutter app for Flutter candidates.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Before the interview clone this repo and get it building on an emulator of your choice.
 
-A few resources to get you started if this is your first Flutter project:
+Feel free to explore the app and get familiar with the existing code. We will be adding functionality to the app in the pairing session.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The app is a list of pokemon that are being pulled from https://pokeapi.co/. We will be adding more functionality to the app in the pairing sessions.
