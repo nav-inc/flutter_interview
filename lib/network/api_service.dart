@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -12,54 +10,20 @@ typedef OnError = void Function(
 class ApiService {
   factory ApiService() => _instance ??= ApiService._();
   ApiService._();
-  static const String authApiKey = 'X-API-Key';
-  static const String authorization = 'authorization';
-  static const String v3ApiKeyHeaderKey2 = 'X-API-Key';
-  static const String acceptKey = 'Accept';
-  static const String contentTypeKey = 'Content-Type';
-  static const String applicationJson = 'application/json';
-  static const String entJwtKey = 'X-Ent-JWT';
-  static const String jwtKey = 'X-Authentication-JWT';
-  static const String cookieEnd = ';';
-  static const String cookie = 'Cookie';
-  static const String setCookie = 'Set-Cookie';
 
   static ApiService? _instance;
 
   final String baseAPI = "https://pokeapi.co/api/v2";
 
-  bool get isInDebugMode {
-    var inDebugMode = false;
-    assert(inDebugMode = true, 'set inDebugMode to true');
-    return inDebugMode;
-  }
-
   static const _timeout = 30000;
 
-  Interceptor? aliceInterceptor;
   OnError? errorCallback;
-
-  static Map<String, String> _defaultHeaders() => {
-        acceptKey: applicationJson,
-        contentTypeKey: applicationJson,
-      };
-
-  static String platformName() {
-    if (Platform.isAndroid) return 'Android';
-    if (Platform.isIOS) return 'iOS';
-    if (Platform.isFuchsia) return 'Fuchsia';
-    if (Platform.isLinux) return 'Linux';
-    if (Platform.isMacOS) return 'MacOS';
-    if (Platform.isWindows) return 'Windows';
-    return 'Web';
-  }
 
   Dio _dio() {
     final options = BaseOptions(
       baseUrl: baseAPI,
       connectTimeout: _timeout,
       receiveTimeout: _timeout,
-      headers: {..._defaultHeaders()},
     );
 
     final dio = Dio(options);

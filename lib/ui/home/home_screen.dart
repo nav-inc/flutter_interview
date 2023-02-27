@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_interview/models/pokemon_list_response.dart';
-import 'package:flutter_interview/network/api_service.dart';
-import 'package:flutter_interview/repository/pokemon_repistory.dart';
+import 'package:interview_project/models/pokemon_list_response.dart';
+import 'package:interview_project/network/api_service.dart';
+import 'package:interview_project/repository/pokemon_repository.dart';
+import 'package:interview_project/ui/details/details_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -35,12 +36,17 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView.builder(
           itemCount: pokemonResponse?.results?.length ?? 0,
           itemBuilder: (BuildContext context, int index) {
-            final pokemon = pokemonResponse?.results?[index];
-            final name = pokemon?.name?.toUpperCase() ?? "";
+            final pokemonInfo = pokemonResponse?.results?[index];
+            final name = pokemonInfo?.name?.toUpperCase() ?? "";
             return ListTile(
-                leading: null,
-                trailing: const Icon(Icons.arrow_right_sharp),
-                title: Text(name));
+              leading: null,
+              trailing: const Icon(Icons.arrow_right_sharp),
+              title: Text(name),
+              onTap: () => Navigator.pushNamed(
+                context,
+                '/details',
+              ),
+            );
           }),
     );
   }

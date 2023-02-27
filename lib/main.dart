@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_interview/ui/home/home_screen.dart';
+import 'package:interview_project/ui/details/details_screen.dart';
+import 'package:interview_project/ui/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,11 +13,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/': (context) => const HomeScreen(),
+        '/details': (context) => const DetailsScreen(),
+      },
+      initialRoute: '/',
       title: 'Nav Interview',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
