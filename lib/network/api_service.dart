@@ -15,15 +15,15 @@ class ApiService {
 
   final String baseAPI = "https://pokeapi.co/api/v2";
 
-  static const _timeout = 30000;
+  static const _timeout = 30;
 
   OnError? errorCallback;
 
   Dio _dio() {
     final options = BaseOptions(
       baseUrl: baseAPI,
-      connectTimeout: _timeout,
-      receiveTimeout: _timeout,
+      connectTimeout: Duration(seconds: _timeout),
+      receiveTimeout: Duration(seconds: _timeout),
     );
 
     final dio = Dio(options);
@@ -47,7 +47,7 @@ class ApiService {
 
   void notifyError(dynamic error, {String? info, bool sendErrorInfo = false}) {
     if (errorCallback != null) {
-      if (error is DioError) {
+      if (error is DioException) {
         errorCallback!(
           error.error,
           info: error.toString(),
